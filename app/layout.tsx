@@ -3,6 +3,7 @@ import "./globals.css";
 import {
   ClerkProvider
 } from '@clerk/nextjs'
+import ConvexClientProvider from "@/components/ConvexClientProvider";
 
 export const metadata: Metadata = {
   title: "HRConnect",
@@ -16,11 +17,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ClerkProvider>
-        <body>
-          {children}
-        </body>
-      </ClerkProvider>
+      <body>
+        <ClerkProvider
+            signInFallbackRedirectUrl="/dashboard"
+            signUpFallbackRedirectUrl="/dashboard"
+        >
+          <ConvexClientProvider>
+            {children}
+          </ConvexClientProvider>
+        </ClerkProvider>
+      </body>
     </html>
   );
 }
