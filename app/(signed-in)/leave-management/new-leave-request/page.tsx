@@ -1,9 +1,10 @@
+import LeaveRequestForm from '@/components/LeaveRequestForm'
 import React from 'react'
 
 const NewLeaveRequest = () => {
   return (
     <>
-        <h1>New Leave Request</h1>
+        <LeaveRequestForm />
     </>
   )
 }
