@@ -13,31 +13,36 @@ import {
     FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { CalendarIcon } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-import { Calendar } from "./ui/calendar";
-import { format } from "date-fns";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { useRouter } from "next/navigation";
 
 // Leave request form schema
 const leaveRequestFormSchema = z.object({
     employeeName: z.string().min(2).max(50),
-    leaveStartDate: z.date(),
-    leaveEndDate: z.date()
+    leaveStartDate: z.string().min(16).max(20),
+    leaveEndDate: z.string().min(16).max(20)
 })
 
 const LeaveRequestForm = () => {
+    const router = useRouter();
+    const createLeaveRequest = useMutation(api.leave_requests.createLeaveRequest);
+
     const form = useForm<z.infer<typeof leaveRequestFormSchema>>({
         resolver: zodResolver(leaveRequestFormSchema),
         defaultValues: {
             employeeName: "",
+            leaveStartDate: "",
+            leaveEndDate: "",
         },
     })
 
     const onSubmit = (values: z.infer<typeof leaveRequestFormSchema>) => {
         // Add mutation server action
+        createLeaveRequest(values)
         console.log(values)
+        router.push("/leave-management")
     }
 
     return (
@@ -67,39 +72,11 @@ const LeaveRequestForm = () => {
                                 control={form.control}
                                 name="leaveStartDate"
                                 render={({ field }) => (
-                                    <FormItem className="flex flex-col">
-                                        <FormLabel>Date to Start Leave</FormLabel>
-                                        <Popover>
-                                            <PopoverTrigger asChild>
-                                                <FormControl>
-                                                    <Button
-                                                        variant={"outline"}
-                                                        className={cn(
-                                                            "w-[250px] pl-3 text-left font-normal",
-                                                            !field.value && "text-muted-foreground"
-                                                        )}
-                                                    >
-                                                        {field.value ? (
-                                                            format(field.value, "PPP")
-                                                        ) : (
-                                                            <span>Pick a date</span>
-                                                        )}
-                                                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                                                    </Button>
-                                                </FormControl>
-                                            </PopoverTrigger>
-                                            <PopoverContent className="w-auto p-0" align="start">
-                                                <Calendar
-                                                    mode="single"
-                                                    selected={field.value}
-                                                    onSelect={field.onChange}
-                                                    disabled={(date: any) =>
-                                                        date < new Date()
-                                                    }
-                                                    captionLayout="dropdown"
-                                                />
-                                            </PopoverContent>
-                                        </Popover>
+                                    <FormItem>
+                                        <FormLabel>Date Leave Starts</FormLabel>
+                                        <FormControl>
+                                            <Input placeholder="Date Leave starts" {...field} />
+                                        </FormControl>
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -109,39 +86,11 @@ const LeaveRequestForm = () => {
                                 control={form.control}
                                 name="leaveEndDate"
                                 render={({ field }) => (
-                                    <FormItem className="flex flex-col">
-                                        <FormLabel>Date to End Leave</FormLabel>
-                                        <Popover>
-                                            <PopoverTrigger asChild>
-                                                <FormControl>
-                                                    <Button
-                                                        variant={"outline"}
-                                                        className={cn(
-                                                            "w-[250px] pl-3 text-left font-normal",
-                                                            !field.value && "text-muted-foreground"
-                                                        )}
-                                                    >
-                                                        {field.value ? (
-                                                            format(field.value, "PPP")
-                                                        ) : (
-                                                            <span>Pick a date</span>
-                                                        )}
-                                                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                                                    </Button>
-                                                </FormControl>
-                                            </PopoverTrigger>
-                                            <PopoverContent className="w-auto p-0" align="start">
-                                                <Calendar
-                                                    mode="single"
-                                                    selected={field.value}
-                                                    onSelect={field.onChange}
-                                                    disabled={(date: any) =>
-                                                        date < new Date()
-                                                    }
-                                                    captionLayout="dropdown"
-                                                />
-                                            </PopoverContent>
-                                        </Popover>
+                                    <FormItem>
+                                        <FormLabel>Date Leave Ends</FormLabel>
+                                        <FormControl>
+                                            <Input placeholder="Date leave ends" {...field} />
+                                        </FormControl>
                                         <FormMessage />
                                     </FormItem>
                                 )}
