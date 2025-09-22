@@ -17,6 +17,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 // Leave request form schema
 const leaveRequestFormSchema = z.object({
@@ -41,6 +42,10 @@ const LeaveRequestForm = () => {
     const onSubmit = (values: z.infer<typeof leaveRequestFormSchema>) => {
         // Add mutation server action
         createLeaveRequest(values)
+
+        toast.success("Success", {
+            description: "Leave request submitted",
+        });
         console.log(values)
         router.push("/leave-management")
     }
@@ -60,25 +65,25 @@ const LeaveRequestForm = () => {
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Name</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Your name" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
+                                            <FormControl>
+                                                <Input placeholder="Your name" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
                                     </FormItem>
                                 )}
                             />
-
+        
                             <FormField
                                 control={form.control}
                                 name="leaveStartDate"
                                 render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Date Leave Starts</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Date Leave starts" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
+                                <FormItem>
+                                    <FormLabel>Date Leave Starts</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Date Leave starts" {...field} />
+                                    </FormControl>
+                                <FormMessage />
+                                </FormItem>
                                 )}
                             />
 
@@ -94,11 +99,11 @@ const LeaveRequestForm = () => {
                                         <FormMessage />
                                     </FormItem>
                                 )}
-                            />
+                            />        
                             <Button 
-                            type="submit"
-                            className="max-w-md mx-auto mt-2 w-full flex gap-2"
-                            disabled={form.formState.isSubmitting}
+                                type="submit"
+                                className="max-w-md mx-auto mt-2 w-full flex gap-2"
+                                disabled={form.formState.isSubmitting}
                             >
                                 Submit
                             </Button>

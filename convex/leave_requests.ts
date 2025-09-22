@@ -17,9 +17,20 @@ export const createLeaveRequest = mutation({
     }
 })
 
-// Query leave requests
+// Query all leave requests
 export const getLeaveRequests = query({
     handler: async (ctx) => {
         return ctx.db.query("leave_requests").collect()
+    },
+});
+
+// Query a single leave request
+export const getLeaveRequest = query({
+    args: {
+        id: v.id("leave_requests")
+    },
+    handler: async (ctx, args) => {
+        const leave_request = await ctx.db.get(args.id);
+        return leave_request;
     },
 });

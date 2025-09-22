@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useQuery } from 'convex/react'
 import { api } from '@/convex/_generated/api'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { EyeIcon, PencilIcon } from 'lucide-react'
+import { EyeIcon } from 'lucide-react'
 import Link from 'next/link'
 
 const LeaveManagement = () => {
@@ -62,13 +62,8 @@ const LeaveManagement = () => {
                     <TableCell>Status</TableCell>
                     <TableCell className="flex justify-end gap-1">
                       <Button asChild variant="outline" size="sm">
-                        <Link href="#">
+                        <Link href={`/leave-management/leave-request/${leave_request._id}`}>
                           <EyeIcon />
-                        </Link>
-                      </Button>
-                      <Button asChild variant="outline" size="sm">
-                        <Link href="#">
-                          <PencilIcon />
                         </Link>
                       </Button>
                     </TableCell>

@@ -4,7 +4,7 @@ import {
   ClerkProvider
 } from '@clerk/nextjs'
 import ConvexClientProvider from "@/components/ConvexClientProvider";
-import NavBar from "@/components/NavBar";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "HRConnect",
@@ -25,6 +25,7 @@ export default function RootLayout({
         >
           <ConvexClientProvider>
             {children}
+            <Toaster richColors />
           </ConvexClientProvider>
         </ClerkProvider>
       </body>
