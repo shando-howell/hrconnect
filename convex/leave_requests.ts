@@ -1,7 +1,7 @@
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
-// Create leave requests
+// Create leave request
 export const createLeaveRequest = mutation({
     args: {
         employeeName: v.string(),

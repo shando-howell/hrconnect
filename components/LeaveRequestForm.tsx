@@ -103,7 +103,6 @@ const LeaveRequestForm = () => {
                             <Button 
                                 type="submit"
                                 className="max-w-md mx-auto mt-2 w-full flex gap-2"
-                                disabled={form.formState.isSubmitting}
                             >
                                 Submit
                             </Button>
