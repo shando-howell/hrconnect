@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { SignInButton, SignedOut } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -8,11 +9,6 @@ export default function Home() {
       <Header />
       <main className="flex-1 flex flex-col items-center px-4 py-16 sm:px-6 text-center gap-20">
         <div className="max-w-4xl space-y-8 relative">
-          {/* Background gradient */}
-          {/* <div className="absolute inset-0 -z-10 bg-gradient-to-br from-green-50 via-blue-50 
-          to-indigo-50 dark:from-green-950/50 dark:via-blue-950/20 dark:to-indigo-950/20
-          rounded-3xl blue-3xl scale-150 opacity-60"></div> */}
-
           <div className="max-w-4xl space-y-8 relative">
             <h1 className="text-5xl sm:text-7xl font-bold tracking-tight bg-clip-text text-transparent
             bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 dark:from-green-400 
@@ -31,14 +27,18 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-6">
-            <SignedOut>
+            {/* <SignedOut>
               <SignInButton mode="modal">
                 <Button variant="outline" size="lg" className="text-blue-600 text-lg px-8
                 py-6 h-auto">
                   Start Now
                 </Button>
               </SignInButton>
-            </SignedOut>
+            </SignedOut> */}
+            <Button variant="outline" size="lg" className="text-blue-600 text-lg px-8
+                py-6 h-auto">
+                <Link href="/leave-management">Start Now</Link>
+            </Button>
           </div>
         </div>
       </main>

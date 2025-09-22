@@ -12,6 +12,8 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
+import { SignOutButton } from "@clerk/nextjs"
+import { Button } from "./ui/button"
 
 const data = {
   navMain: [
@@ -75,7 +77,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <Link href="signout">Sign Out</Link>
+        <SignOutButton />
       </SidebarFooter>
     </Sidebar>
   )
