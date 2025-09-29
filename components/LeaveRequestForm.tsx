@@ -21,7 +21,7 @@ import { toast } from "sonner";
 
 // Leave request form schema
 const leaveRequestFormSchema = z.object({
-    employeeName: z.string().min(2).max(50),
+    name: z.string().min(5).max(50),
     leaveStartDate: z.string().min(16).max(20),
     leaveEndDate: z.string().min(16).max(20)
 })
@@ -33,18 +33,18 @@ const LeaveRequestForm = () => {
     const form = useForm<z.infer<typeof leaveRequestFormSchema>>({
         resolver: zodResolver(leaveRequestFormSchema),
         defaultValues: {
-            employeeName: "",
+            name: "",
             leaveStartDate: "",
             leaveEndDate: "",
         },
     })
 
     const onSubmit = (values: z.infer<typeof leaveRequestFormSchema>) => {
-        // Add mutation server action
-        createLeaveRequest(values)
+        // Database mutation function
+        createLeaveRequest(values);
 
         toast.success("Success", {
-            description: "Leave request submitted",
+            description: "Leave request submitted.",
         });
         console.log(values)
         router.push("/leave-management")
@@ -61,7 +61,7 @@ const LeaveRequestForm = () => {
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                             <FormField
                                 control={form.control}
-                                name="employeeName"
+                                name="name"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Name</FormLabel>
@@ -80,7 +80,7 @@ const LeaveRequestForm = () => {
                                 <FormItem>
                                     <FormLabel>Date Leave Starts</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Date Leave starts" {...field} />
+                                        <Input placeholder="Date leave starts" {...field} />
                                     </FormControl>
                                 <FormMessage />
                                 </FormItem>

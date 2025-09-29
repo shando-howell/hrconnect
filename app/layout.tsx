@@ -20,8 +20,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ClerkProvider
-            signInFallbackRedirectUrl="/leave-management"
-            signUpFallbackRedirectUrl="/leave-management"
+            signInFallbackRedirectUrl="/dashboard"
+            signUpFallbackRedirectUrl="/dashboard"
         >
           <ConvexClientProvider>
             {children}

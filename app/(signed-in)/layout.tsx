@@ -31,6 +31,9 @@ function Layout({ children }: { children: React.ReactNode }) {
                     </header>
                     <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
                         {children}
+                        <footer className="fixed bottom-0 inset-x-0 flex justify-end text-gray-800 p-3">
+                            <p>Developed by Shando-Paul Howell</p>
+                        </footer>
                     </div>
                 </SidebarInset>                     
             </SidebarProvider>

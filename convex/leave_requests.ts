@@ -4,13 +4,13 @@ import { v } from "convex/values";
 // Create leave request
 export const createLeaveRequest = mutation({
     args: {
-        employeeName: v.string(),
+        name: v.string(),
         leaveStartDate: v.string(),
         leaveEndDate: v.string()
     },
     handler: async (ctx, args) => {
         await ctx.db.insert("leave_requests", {
-            employeeName: args.employeeName,
+            name: args.name,
             leaveStartDate: args.leaveStartDate,
             leaveEndDate: args.leaveEndDate
         })

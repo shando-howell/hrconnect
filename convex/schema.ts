@@ -3,13 +3,18 @@ import { v } from "convex/values";
 
 export default defineSchema({
     leave_requests: defineTable({
-        employeeName: v.string(),
+        name: v.string(),
         leaveStartDate: v.string(),
         leaveEndDate: v.string()
     }),
     users: defineTable({
-        userId: v.string(),
         name: v.string(),
-        email: v.string(),
+        emailAddress: v.string(),
+        extension: v.string(),
+        position: v.string(),
+        department: v.string(),
+        cug: v.string(),
+        address: v.string(),
+        branch: v.string()
     })
 })

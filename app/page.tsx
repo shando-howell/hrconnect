@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { SignInButton, SignedOut } from "@clerk/nextjs";
-import Link from "next/link";
 
 export default function Home() {
   return (
@@ -27,18 +26,14 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-6">
-            {/* <SignedOut>
+            <SignedOut>
               <SignInButton mode="modal">
                 <Button variant="outline" size="lg" className="text-blue-600 text-lg px-8
                 py-6 h-auto">
                   Start Now
                 </Button>
               </SignInButton>
-            </SignedOut> */}
-            <Button variant="outline" size="lg" className="text-blue-600 text-lg px-8
-                py-6 h-auto">
-                <Link href="/leave-management">Start Now</Link>
-            </Button>
+            </SignedOut>
           </div>
         </div>
       </main>

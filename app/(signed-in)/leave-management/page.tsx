@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
-import { useQuery } from 'convex/react'
+import { useConvexAuth, useQuery } from 'convex/react'
 import { api } from '@/convex/_generated/api'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { EyeIcon } from 'lucide-react'
@@ -11,20 +11,35 @@ import Link from 'next/link'
 const LeaveManagement = () => {
   const router = useRouter();
   const leave_requests = useQuery(api.leave_requests.getLeaveRequests)
+  const user = useConvexAuth();
+  console.log(user)
 
+  // Calculate leave requests remaining
+  const leaveRequestsUsed: number | undefined = leave_requests?.length
+  let totalLeaves = 15
+  const leavesRemaining = totalLeaves - leaveRequestsUsed!
+  
   const handleNewRequest = () => {
     router.push('/leave-management/new-leave-request');
   }
 
   return (
     <>
-      <Button 
-        onClick={handleNewRequest}
-        variant="outline"
-        className="max-w-sm"
-      >
-        New Leave Request
-      </Button>
+      <div className="flex flex-row">
+        <div className="flex-1">
+          <Button 
+            onClick={handleNewRequest}
+            variant="outline"
+            className="max-w-sm"
+          >
+            New Leave Request
+          </Button>
+        </div>
+        <div>
+          <h1>You have {leavesRemaining} leave requests remaining.</h1>
+        </div>
+      </div>
+
 
       <div className="mt-5">
         {!leave_requests && (
@@ -56,7 +71,7 @@ const LeaveManagement = () => {
               {leave_requests?.map((leave_request) => {
                 return (
                   <TableRow key={leave_request._id}>
-                    <TableCell>{leave_request.employeeName}</TableCell>
+                    <TableCell>{leave_request.name}</TableCell>
                     <TableCell>{leave_request.leaveStartDate}</TableCell>
                     <TableCell>{leave_request.leaveEndDate}</TableCell>
                     <TableCell>Status</TableCell>
@@ -74,10 +89,6 @@ const LeaveManagement = () => {
           </Table>
         )}
       </div>
-  
-      
-
-       
     </>
   )
 }

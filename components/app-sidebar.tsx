@@ -77,7 +77,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <SignOutButton />
+        <SignOutButton>
+          <Button size="sm">Sign Out</Button>
+        </SignOutButton>
       </SidebarFooter>
     </Sidebar>
   )
