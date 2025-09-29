@@ -1,6 +1,12 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-const isAuthenticatedRoute = createRouteMatcher(["/dashboard(.*)"]);
+const isAuthenticatedRoute = createRouteMatcher([
+  "/dashboard(.*)",
+  "/attendance(.*)",
+  "/employees(.*)",
+  "/leave-management(.*)",
+  "/reports(.*)"
+]);
 
 export default clerkMiddleware(async (auth, req) => {
   if (isAuthenticatedRoute(req)) {
