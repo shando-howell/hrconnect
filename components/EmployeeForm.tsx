@@ -69,117 +69,119 @@ const EmployeeForm = () => {
                 <CardContent>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                            <FormField
-                                control={form.control}
-                                name="name"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Name</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Employee name" {...field} />
-                                        </FormControl>
+                            <div className="grid grid-cols-2 gap-4">
+                                <FormField
+                                    control={form.control}
+                                    name="name"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Name</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="Employee name" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            
+                                <FormField
+                                    control={form.control}
+                                    name="emailAddress"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Email Address</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="Email address" {...field} />
+                                            </FormControl>
                                         <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+                                        </FormItem>
+                                    )}
+                                />
+                        
+                                <FormField
+                                    control={form.control}
+                                    name="extension"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Extension</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="Extension" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
 
-                            <FormField
-                                control={form.control}
-                                name="emailAddress"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Email Address</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Email address" {...field} />
-                                        </FormControl>
-                                    <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+                                <FormField
+                                    control={form.control}
+                                    name="position"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Position</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="Position" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
 
-                            <FormField
-                                control={form.control}
-                                name="extension"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Extension</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Extension" {...field} />
-                                        </FormControl>
+                                <FormField
+                                    control={form.control}
+                                    name="department"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Department</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="Department" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <FormField
+                                    control={form.control}
+                                    name="cug"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>CUG</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="CUG" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <FormField
+                                    control={form.control}
+                                    name="address"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Address</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="Address" {...field} />
+                                            </FormControl>
                                         <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+                                        </FormItem>
+                                    )}
+                                />
 
-                            <FormField
-                                control={form.control}
-                                name="position"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Position</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Position" {...field} />
-                                        </FormControl>
+                                <FormField 
+                                    control={form.control}
+                                    name="branch"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Branch</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="Branch" {...field} />
+                                            </FormControl>
                                         <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-
-                            <FormField
-                                control={form.control}
-                                name="department"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Department</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Department" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-
-                            <FormField
-                                control={form.control}
-                                name="cug"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>CUG</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="CUG" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-
-                            <FormField
-                                control={form.control}
-                                name="address"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Address</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Address" {...field} />
-                                        </FormControl>
-                                    <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-
-                            <FormField 
-                                control={form.control}
-                                name="branch"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Branch</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Branch" {...field} />
-                                        </FormControl>
-                                    <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
 
                             <Button
                                 type="submit"
