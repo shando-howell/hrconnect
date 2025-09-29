@@ -16,7 +16,7 @@ const LeaveManagement = () => {
 
   // Calculate leave requests remaining
   const leaveRequestsUsed: number | undefined = leave_requests?.length
-  let totalLeaves = 15
+  const totalLeaves = 15
   const leavesRemaining = totalLeaves - leaveRequestsUsed!
   
   const handleNewRequest = () => {
@@ -36,7 +36,7 @@ const LeaveManagement = () => {
           </Button>
         </div>
         <div>
-          <h1>You have {leavesRemaining} leave requests remaining.</h1>
+          <h1>You have {leavesRemaining} of {totalLeaves} leave requests remaining.</h1>
         </div>
       </div>
 
