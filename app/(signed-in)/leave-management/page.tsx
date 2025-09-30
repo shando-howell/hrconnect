@@ -36,7 +36,7 @@ const LeaveManagement = () => {
           </Button>
         </div>
         <div>
-          <h1>You have {leavesRemaining} of {totalLeaves} leave requests remaining.</h1>
+          {/* <h1>You have {leavesRemaining} of {totalLeaves} leave requests remaining.</h1> */}
         </div>
       </div>
 
